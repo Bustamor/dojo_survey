@@ -1,52 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>Dojo Survey</title>
 </head>
+
 <body>
-    <div class="container bg-warning col-8">
+    {% with messages = get_flashed_messages() %}
+    <!-- declare a variable called messages -->
+    {% if messages %}
+    <!-- check if there are any messages -->
+    {% for message in messages %}
+    <!-- loop through the messages -->
+    <p>{{message}}</p>
+    <!-- display each message in a paragraph tag -->
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+
+    <div class="container bg-warning col-8 p-3">
         <h2>Dojo Survey</h2>
-        <form action ="/users" method="post">
-            <input type="hidden" name="users" value = "info">
+        <form action="/users" method="post">
+            <input type="hidden" name="users" value="info">
             <div class=mb-3>
-            <label for="exampleInputEmail1" name ="name" class="form-label">Name</label>
-            <input type="text" name ="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+            </div>
             <div id="emailHelp" class="form-text">Choose your dojo location</div>
             <!-- FORM -->
             <select class="form-select mb-3" name="location" aria-label="Default select example">
-                <option selected>Dojo Location</option>
+                <option selected value="null">Dojo Location</option>
                 <option value="Burbank">Burbank</option>
                 <option value="San Jose">San Jose</option>
                 <option value="Chicago">Chicago</option>
             </select>
             <!-- Fav Language -->
-            <select class="form-select mb-3" name ="favorite_lang" aria-label="Default select example">
-                <option selected>What is your favorite language?</option>
+            <select class="form-select mb-3" name="favorite_lang" aria-label="Default select example">
+                <option selected value="null">What is your favorite language?</option>
                 <option value="CSS">CSS</option>
                 <option value="PYTHON">PYTHON</option>
                 <option value="JAVA">JAVA</option>
             </select>
             <!-- Comment Box -->
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="exampleFormControlTextarea1">What kind of Ninja will you become?</label>
-                <textarea name="kind_of_ninja" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea name="kind_of_ninja" class="form-control" id="exampleFormControlTextarea1"
+                    rows="3"></textarea>
             </div>
             <!-- Checks -->
-            <div class="mb-3 form-check">
-            <input type="checkbox"  name ="first_check" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label"  for="exampleCheck1">Check if learning how to do this makes you feel like a badass</label>
+            <!-- <div class="mb-3 form-check">
+                <input type="checkbox" name="first_check" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check if learning how to do this makes you feel
+                    like a badass</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox"  name ="second_check" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label"  for="exampleCheck1">Check if you worship the god of programming</label>
-                </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                <input type="checkbox" name="second_check" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check if you worship the god of
+                    programming</label> -->
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     </div>
 </body>
+
 </html>
